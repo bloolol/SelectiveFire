@@ -104,6 +104,12 @@ public class SelectiveFire : Script
                 this.firemodeImg = this.firemodeImgRoot + "burst3.png";
                 this.BurstMode(this.ShotsPerBurst);
             }
+            else if (this.fireMode == 4)
+            {
+                
+                this.firemodeImg = this.firemodeImgRoot + "safety.png";
+                SafetyMode();
+            }
             if (this.ShowImage && this.AutoHideImage)
             {
                 if (current != this.previousWeapon)
@@ -223,6 +229,47 @@ public class SelectiveFire : Script
             this.firemodechanged = true;
             SelectorSwitchSoundFX();
         }
+        else if (this.fireMode == 3)
+        {
+            this.fireMode = 4;
+            if (this.ShowNotif)
+                UI.Notify("Fire mode: FULL-AUTO");
+            this.firemodechanged = true;
+            SelectorSwitchSoundFX();
+
+        }
+        else
+        {
+            if (this.fireMode != 4)
+                return;
+            this.fireMode = 1;
+            if (this.ShowNotif)
+                UI.Notify("Fire mode: SAFETY");
+            this.firemodechanged = true;
+            SelectorSwitchSoundFX();
+        }
+    }
+    /*
+    private void OnKeyUp(object sender, KeyEventArgs e)
+    {
+        if (!this.capableWeapon || e.KeyCode != this.ChangeFireModeHotkey_Keys)
+            return;
+        if (this.fireMode == 1)
+        {
+            this.fireMode = 2;
+            if (this.ShowNotif)
+                UI.Notify("Fire mode: SEMI-AUTO");
+            this.firemodechanged = true;
+            SelectorSwitchSoundFX();
+        }
+        else if (this.fireMode == 2)
+        {
+            this.fireMode = 3;
+            if (this.ShowNotif)
+                UI.Notify("Fire mode: BURST - x" + (object)this.ShotsPerBurst);
+            this.firemodechanged = true;
+            SelectorSwitchSoundFX();
+        }
         else
         {
             if (this.fireMode != 3)
@@ -234,7 +281,7 @@ public class SelectiveFire : Script
             SelectorSwitchSoundFX();
         }
     }
-
+    */
     private void BurstMode(int SpB)
     {
         if (this.player.IsShooting)
@@ -260,12 +307,40 @@ public class SelectiveFire : Script
         Game.Player.DisableFiringThisFrame();
     }
 
+    private void SafetyMode()
+    {
+        Game.DisableControlThisFrame(0, GTA.Control.Attack);
+        Game.DisableControlThisFrame(0, GTA.Control.Attack2);
+        Game.Player.DisableFiringThisFrame();
+        if (!Game.IsControlJustReleased(0, GTA.Control.Attack))
+            return;
+        DryFireSoundFX();
+        
+    }
+
     private void StealthMode(bool sth)
     {
         Function.Call(Hash._0x88CBB5CEB96B7BD2, (InputArgument)this.player, (InputArgument)sth, (InputArgument)0);
     }
 
     private void SelectorSwitchSoundFX()
+    {
+        if (File.Exists("scripts\\SelectiveFire\\Switch.wav"))
+        {
+            this.WavereaderDown = new WaveFileReader("scripts\\SelectiveFire\\Switch.wav");
+            this.wavechanDown = new WaveChannel32((WaveStream)this.WavereaderDown);
+            this.volumeDown = (float)this.gvd;
+            this.DSODown = new DirectSoundOut();
+            this.DSODown.Init((IWaveProvider)this.wavechanDown);
+            this.wavechanDown.Volume = this.volumeDown / 100f;
+            this.DSODown.Play();
+            this.DSODown.Dispose();
+        }
+        else
+            GTA.UI.Notify("Switch.wav is not found!");
+    }
+
+    private void DryFireSoundFX()
     {
         if (File.Exists("scripts\\SelectiveFire\\dryfire.wav"))
         {
