@@ -1,0 +1,9 @@
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\bin\Debug\Selective_Fire.dll
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\bin\Debug\Selective_Fire.pdb
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\bin\Debug\NAudio.dll
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\bin\Debug\ScriptHookVDotNet.dll
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\obj\Debug\Selective_Fire.csproj.AssemblyReference.cache
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\obj\Debug\Selective_Fire.csproj.CoreCompileInputs.cache
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\obj\Debug\Selectiv.2CA9D86D.Up2Date
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\obj\Debug\Selective_Fire.dll
+C:\Users\clope\OneDrive\Documents\GTA V Modding\repos\repos\GTAV_CorrectProjectType\Selective_Fire\obj\Debug\Selective_Fire.pdb
